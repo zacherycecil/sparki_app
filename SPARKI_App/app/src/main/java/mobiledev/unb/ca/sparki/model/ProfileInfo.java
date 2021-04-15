@@ -55,4 +55,14 @@ public class ProfileInfo {
             electrodeData = null;
         return electrodeData;
     }
+
+    public String getNonTherapeuticString()
+    {
+        String electrodeData = "Macro: " + electrodeList[0].getMacro();
+        if(electrodeList[0].getTrigger() != null)
+        {
+            electrodeData += "\nTrigger: " + electrodeList[0].getTrigger();
+        }
+        return electrodeData;
+    }
 }

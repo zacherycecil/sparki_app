@@ -33,7 +33,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/macroText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
@@ -104,12 +104,15 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/viewwiki"
-        android:id="@+id/sync_button"/>
+        android:id="@+id/sync_button"/><![CDATA[
 
-    <TextView
-        android:id="@+id/status_textview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    android:onClick="on" />
 
+
+
+    android:onClick="visible" />
+
+
+
+    ]]>
 </LinearLayout>

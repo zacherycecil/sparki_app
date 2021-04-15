@@ -82,10 +82,15 @@ public class MainActivity extends AppCompatActivity {
                     Intent myIntent = new Intent(view.getContext(), DetailActivity.class);
                     myIntent.putExtra("name", profileInfo.getProfileName());
                     myIntent.putExtra("mode", profileInfo.getProfileMode());
-                    myIntent.putExtra("e1", profileInfo.getElectrodeString(0));
-                    myIntent.putExtra("e2", profileInfo.getElectrodeString(1));
-                    myIntent.putExtra("e3", profileInfo.getElectrodeString(2));
-                    myIntent.putExtra("e4", profileInfo.getElectrodeString(3));
+                    if(profileInfo.getProfileMode().equals("Therapeutic")) {
+                        myIntent.putExtra("e1", profileInfo.getElectrodeString(0));
+                        myIntent.putExtra("e2", profileInfo.getElectrodeString(1));
+                        myIntent.putExtra("e3", profileInfo.getElectrodeString(2));
+                        myIntent.putExtra("e4", profileInfo.getElectrodeString(3));
+                    }
+                    else
+                        myIntent.putExtra("macro", profileInfo.getNonTherapeuticString());
+
                     MainActivity.this.startActivity(myIntent);
                 }
             });

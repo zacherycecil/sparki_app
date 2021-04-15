@@ -37,6 +37,7 @@ public class CSVUtil {
                 int j = 0;
 
                 String profileMode = reader.readLine().split(",")[0];
+                Log.v("HHhHHHH", profileMode.equals("FreeRun") + " + " + fileNames[i]);
                 switch (profileMode) {
                     case "Therapeutic":
                         while ((rowData = reader.readLine()) != null) {
@@ -46,41 +47,27 @@ public class CSVUtil {
                             j++;
                         }
                         break;
+
                     case "FES": {
-                        String h = reader.readLine();
-                        String[] macros = h.split(",");
-                        String[] triggers = reader.readLine().split(",");
-                        for (j = 0; j < 4; j++)
-                        {
-                            Electrode electrode;
-                            if (j < macros.length)
-                            {
-                                electrode = new Electrode(macros[j], triggers[j]);
-                            }
-                            else
-                                electrode = new Electrode();
-                            electrodeList[j] = electrode;
-                        }
+                        String macro = reader.readLine();
+                        String trigger = reader.readLine();
+                        Electrode electrode = new Electrode(macro, trigger);
+                        electrodeList[j] = electrode;
+
                         break;
                     }
                     case "FreeRun": {
-                        String[] macros = reader.readLine().split(",");
-                        for (j = 0; j < macros.length; j++) {
-                            Electrode electrode;
-                            if (j < macros.length) {
-                                electrode = new Electrode(macros[j]);
-                            }
-                            else
-                                electrode = new Electrode();
-                            electrodeList[j] = electrode;
-                        }
+                        String macro = reader.readLine();
+                        Electrode electrode = new Electrode(macro);
+                        electrodeList[j] = electrode;
+
                         break;
                     }
+
                     default:
                         Log.v("h", "smallPROBLEM!\n" + profileMode);
                         break;
                 }
-
                 // SETUP PROFILE INFO
                 ProfileInfo profileInfo = new ProfileInfo(profileName, electrodeList, profileMode);
                 profileInfos[i] = profileInfo;
@@ -88,6 +75,7 @@ public class CSVUtil {
                 reader.close();
                 i++;
             }
+
             return profileInfos;
         } catch (Exception e) {
             Log.v("h", "PROBLEM!");
